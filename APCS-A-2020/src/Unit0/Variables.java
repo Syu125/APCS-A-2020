@@ -39,6 +39,7 @@ public class Variables
 		System.out.println("*        integer types          *");
 		System.out.println("*                               *");
 		System.out.println("*8 bit - byteOne = "+byteOne+"\t\t*");
+		System.out.println("*8 bit - byteOne = "+byteOne+"\t\t*");
 
 
 
