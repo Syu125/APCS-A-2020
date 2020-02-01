@@ -12,7 +12,6 @@ public class AsciiBox
 	{
 		AsciiBox a = new AsciiBox();
 		System.out.println("Sophia \t  1/30/20 \n\n" );
-		System.out.println("+++++++++++++++++++++++++ " );
 		boolean plus = true;
 		for (int i = 0; i < 7; i++) {
 			if(plus) {
@@ -25,9 +24,15 @@ public class AsciiBox
 		}
 	}
 	void addPlus() {
-		System.out.println("+++++++++++++++++++++++++ " );
+		for (int i = 0; i < 3; i++) {
+			System.out.println("+++++++++++++++++++++++++ " );
 	}
+		}
+		
 	void addA() {
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA " );
+		for (int i = 0; i < 2; i++) {
+			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAA " );
+		}
+		
 	}
 }

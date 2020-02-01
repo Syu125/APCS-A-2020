@@ -49,7 +49,8 @@ public class Input
 		shortTwo = keyboard.nextShort();
 		
 		
-
+		keyboard.close();
+		
 		//add in output for all variables
 		System.out.println();
 		System.out.println("integer one = " + intOne );
