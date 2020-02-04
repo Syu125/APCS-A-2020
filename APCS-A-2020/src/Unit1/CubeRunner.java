@@ -4,7 +4,7 @@
 //Date - 2/3
 //Class - APCS-A
 //Lab = Area of Cube
-package Unit2;
+package Unit1;
 public class CubeRunner
 {
 	public static void main( String[] args )

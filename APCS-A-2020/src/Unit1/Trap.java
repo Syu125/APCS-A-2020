@@ -3,7 +3,7 @@
 //Date - 2/3/20
 //Class - APCS-A
 //Lab = Trapezoid Area
-package Unit2;
+package Unit1;
 public class Trap
 {
 	public static double area( int base1, int base2, int height )
