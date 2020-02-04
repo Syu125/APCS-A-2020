@@ -1,5 +1,5 @@
 //(c) A+ Computer Science
-// www.apluscompsci.com
+//www.apluscompsci.com
 //Name - Sophia Yu
 //Date - 2/3
 //Class - APCS-A
@@ -9,6 +9,6 @@ public class Cube
 {
 	public static double area( int side )
 	{
-		return Math.pow(side,2);
+		return 6 * Math.pow(side,2);
 	}
 }

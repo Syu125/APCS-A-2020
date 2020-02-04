@@ -1,4 +1,5 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//© A+ Computer Science
+//www.apluscompsci.com
 //Name - Sophia Yu
 //Date - 2/3/20
 //Class - APCS-A
