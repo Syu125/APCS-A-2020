@@ -3,7 +3,7 @@
 //Date - 2/3/20
 //Class - APCS-A
 //Lab = Trapezoid Area
-package Unit1;
+package Unit2;
 public class TrapRunner
 {
 	public static void main( String[] args )

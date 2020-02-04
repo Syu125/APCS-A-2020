@@ -4,7 +4,7 @@
 //Date - 2/3/20
 //Class - APCS-A
 //Lab = Slope of Line
-package Unit1;
+package Unit2;
 public class Line
 {
 	public static double getSlope( int x1, int y1, int x2, int y2 )

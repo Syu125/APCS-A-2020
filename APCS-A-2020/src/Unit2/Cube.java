@@ -4,7 +4,7 @@
 //Date - 2/3
 //Class - APCS-A
 //Lab = Area of Cube
-package Unit1;
+package Unit2;
 public class Cube
 {
 	public static double area( int side )
