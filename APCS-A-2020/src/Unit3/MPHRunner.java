@@ -16,7 +16,7 @@ public class MPHRunner
 	{
 		Scanner keyboard = new Scanner(in);
 		
-		/*out.print("Enter the distance :: ");
+		out.print("Enter the distance :: ");
 		int dist = keyboard.nextInt();
 
 		out.print("Enter the hours :: ");
@@ -25,16 +25,13 @@ public class MPHRunner
 		out.print("Enter the minutes :: ");
 		int mins = keyboard.nextInt();
 
-		MilesPerHour test = new MilesPerHour(dist, hrs, mins);
-		test.calcMPH();
-		test.print();*/
+		MilesPerHour testInput = new MilesPerHour(dist, hrs, mins);
+		System.out.println("Input MPH: " + testInput + "\n");
 		
 		//add more test cases
-		MilesPerHour test1 = new MilesPerHour(45,0,32);
 		MilesPerHour test2 = new MilesPerHour(96,1,43);
 		MilesPerHour test3 = new MilesPerHour(100,2,25);
 		MilesPerHour test4 = new MilesPerHour(50,2,25);
-		System.out.println(test1);
 		System.out.println(test2);
 		System.out.println(test3);
 		System.out.println(test4);

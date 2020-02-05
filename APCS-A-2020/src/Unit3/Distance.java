@@ -25,29 +25,41 @@ public class Distance
 
 	public Distance(int x1, int y1, int x2, int y2)
 	{
+		xOne = x1;
+		yOne = y1;
+		xTwo = x2;
+		yTwo = y2;
+		
+		calcDistance();
 	}
 
 	public void setCoordinates(int x1, int y1, int x2, int y2)
 	{
+		xOne = x1;
+		yOne = y1;
+		xTwo = x2;
+		yTwo = y2;
 	}
 
 	public void calcDistance()
 	{
+		distance = Math.sqrt(Math.pow(xOne-xTwo, 2)+Math.pow(yOne-yTwo, 2));
 	}
 	
 	public double getDistance()
 	{
-		return 0.0;
+		return distance;
 	}
 	
 	public void print()
 	{
+		System.out.println("distance == " + String.format("%.3f", distance));
 	}
 	
 	//complete print or the toString
 
 	public String toString()
 	{
-		return "";
+		return "Distance from (" + xOne + ", " + yOne + ") to (" + xTwo + ", " + yTwo + ") is " + String.format("%.3f",distance);
 	}
 }
