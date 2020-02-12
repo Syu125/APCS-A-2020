@@ -10,6 +10,15 @@ public class PerfectRunner
 	public static void main( String args[] )
 	{
 		//add test cases
-																
+		/*496
+		45
+		6
+		14
+		8128
+		1245
+		33
+		28
+		27
+		33550336*/
 	}
 }
