@@ -12,6 +12,20 @@ public class VowelsRunner
 		
 		//given structure needed to be accessed in a static way, 
 		//so I changed "s.go" to "FirstLastVowel.go"
+		/*dog#cat#pigaplus
+		pigs#apluscompsci#food
+		##catgiraffeapluscompscI
+		apluscatsanddogsaplus###
+		###
+		Aplusdog#13337#pigaplusprogram
+		code#H00P#code1234
+		##wowgira77##eplus
+		catsandaplusdogsaplus###
+		7
+		A
+		E
+		9AEIOUaeiou@*/
+		
 		System.out.println(  FirstLastVowel.go(  "dog#cat#pigaplus")    );
 		System.out.println(  FirstLastVowel.go(  "pigs#apluscompsci#food")    );
 		System.out.println(  FirstLastVowel.go(  "##catgiraffeapluscompsci")    );

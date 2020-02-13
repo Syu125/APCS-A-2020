@@ -14,6 +14,15 @@ public class StringEqualityRunner
 	public static void main( String args[] )
 	{
 		//add test cases
+		/*hello goodbye
+		one two
+		three four
+		TCEA UIL
+		State Champions
+		ABC ABC
+		ABC CBA
+		Same Same*/
+		
 		System.out.println(new StringEquality("hello", "goodbye").toString());
 		System.out.println(new StringEquality("one", "two").toString());
 		System.out.println(new StringEquality("three", "four").toString());

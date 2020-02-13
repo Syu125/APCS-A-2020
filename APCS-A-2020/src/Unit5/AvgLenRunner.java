@@ -9,6 +9,17 @@ public class AvgLenRunner
 {
 	public static void main( String args[] )
 	{
+		/*dog cats
+		aplus pigs
+		catgiraffe apluscompsci
+		ap aplus
+		pluscat dogsaplus
+		# #
+		aplusdog#13337# pigaplusprogram
+		code code1234
+		wow plus
+		catsand aplusdogsaplus
+		7 77777*/
 		
 		System.out.println( AvgLen.go( "dog", "cats" )) ;
 		System.out.println(	AvgLen.go( "aplus", "pigs" ) ) ;
