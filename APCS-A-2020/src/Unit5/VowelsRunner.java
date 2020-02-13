@@ -9,7 +9,7 @@ public class VowelsRunner
 	public static void main( String args[] )
 	{
 		FirstLastVowel s = new FirstLastVowel();
-			
+		
 		System.out.println(  FirstLastVowel.go(  "dog#cat#pigaplus")    );
 		System.out.println(  FirstLastVowel.go(  "pigs#apluscompsci#food")    );
 		System.out.println(  FirstLastVowel.go(  "##catgiraffeapluscompsci")    );
