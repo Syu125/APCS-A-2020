@@ -18,19 +18,27 @@ public class WordsCompare
 	{
 		wordOne = "";
 		wordTwo = "";
+		compare();
 	}
 
 	public WordsCompare(String one, String two)
 	{
+		wordOne = one;
+		wordTwo = two;
+		compare();
 	}
 
 	public void setWords(String one, String two)
 	{
-
+		wordOne = one; 
+		wordTwo = two;
+		compare();
 	}
 
 	public void compare()
 	{
+		
+		compare = wordOne.compareToIgnoreCase(wordTwo);
 	}
 
 	public String toString()
