@@ -10,6 +10,8 @@ public class VowelsRunner
 	{
 		FirstLastVowel s = new FirstLastVowel();
 		
+		//given structure needed to be accessed in a static way, 
+		//so I changed "s.go" to "FirstLastVowel.go"
 		System.out.println(  FirstLastVowel.go(  "dog#cat#pigaplus")    );
 		System.out.println(  FirstLastVowel.go(  "pigs#apluscompsci#food")    );
 		System.out.println(  FirstLastVowel.go(  "##catgiraffeapluscompsci")    );
