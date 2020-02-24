@@ -35,15 +35,24 @@ public class TriangleFive {
 			for (int i = 0; i < amount; i++) {
 				char l = letter;
 				l += i;
-				if((int)l == 90)
-					
+				if ((int) l > 90) {
+					l = '@';
+					l +=i;
+				}
+				
+				
+				
+				
+				
 				for (int j = 0; j < total - i; j++) {
 					output += l;
 				}
 				output += " ";
+
 			}
 			output += "\n";
 			amount--;
+
 		}
 		return output;
 	}

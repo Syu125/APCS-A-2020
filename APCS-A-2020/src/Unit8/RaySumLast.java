@@ -8,6 +8,16 @@ public class RaySumLast
 {
 	public static int go(int[] ray)
 	{
-		return 0;
+		int last = ray[ray.length-1];
+		int sum = 0;
+		for(int i : ray) {
+			if(i > last) {
+				sum += i;
+			}
+		}
+		if(sum == 0) {
+			return -1;
+		}
+		return sum;
 	}
 }
