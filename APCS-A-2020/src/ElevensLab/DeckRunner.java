@@ -14,7 +14,7 @@ public class DeckRunner
 		 String [] suits = {"CLUBS", "SPADES", "HEARTS", "DIAMONDS"};
 		 int [] points = new int [ranks.length];
 		 for (int i = 0; i < points.length; i++) {
-			points[i] = i; //points[i] = i+1;
+			points[i] = i+1;
 			//System.out.println(points[i]);
 		 }
 		/* System.out.println("ranks length: " + ranks.length);
