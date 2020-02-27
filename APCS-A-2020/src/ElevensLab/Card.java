@@ -5,25 +5,30 @@ package ElevensLab;
 
 public class Card
 {
-	public static final String FACES[] = {"ZERO","ACE","TWO","THREE","FOUR",
-			"FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"};
+	public static final String pointS[] = {"ZERO","ACE","TWO","THREE","FOUR",
+			"FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"}; //anything above 10 is treated as having 10 points, points based on index
 
 	//instance variables
 		//String suit
-		//int face
+		//int point
 	private String suit;
 	private String rank;
-	private int face;
+	private int point;
 
   	//constructors
 	public Card() {
 		suit = "Spades";
-		face = 9;
+		point = 1;
 	}
-	public Card(String rank, String suit, int face) {
-		this.rank = rank;
+	public Card(String rank, String suit, int point) {
+		this.rank = pointS[point];		
 		this.suit = suit;
-		this.face = face;
+		this.point = point;
+	}
+	public Card(String suit, int point) {
+		this.suit = suit;
+		this.rank = pointS[point];
+		this.point = point;
 	}
 
 	// modifiers
@@ -34,8 +39,8 @@ public class Card
 	public void setSuit(String suit) {
 		this.suit = suit;
 	}
-	public void setFace(int face) {
-		this.face = face;
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
   	//accessors
@@ -47,11 +52,11 @@ public class Card
 		return suit;
 	}
 	public int getPoint() {
-		return face;
+		return point;
 	}
 
   	//toString
 	public String toString() {
-		return "";
+		return rank + " of " + suit + " (point value = " + point + ")";
 	}
  }

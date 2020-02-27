@@ -10,15 +10,14 @@ public class CardRunner
 {
 	public static void main( String args[] )
 	{
-		/*  uncomment once Card is built
-		 *
+	
 		Card one = new Card("SPADES", 9);
 		out.println(one.getSuit());
-		out.println(one.getFace());
+		out.println(one.getPoint());
 
 		Card two = new Card("DIAMONDS", 1);
 		out.println(two);
-		two.setFace(3);
+		two.setPoint(3);
 		out.println(two);
 
 		Card three = new Card("CLUBS", 4);
@@ -29,6 +28,6 @@ public class CardRunner
 
 		Card five = new Card("HEARTS", 12);
 		out.println(five);
-		*/
+		
 	}
 }
