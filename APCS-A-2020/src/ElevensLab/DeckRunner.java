@@ -9,7 +9,7 @@ public class DeckRunner
 {
 	public static void main( String args[] )
 	{
-		 String [] ranks = {"ZERO","ACE","TWO","THREE","FOUR",
+		 String [] ranks = {"ACE","TWO","THREE","FOUR",
 				"FIVE","SIX","SEVEN","EIGHT","NINE","TEN","JACK","QUEEN","KING"}; //anything above 10 is treated as having 10 points, points based on index
 		 String [] suits = {"CLUBS", "SPADES", "HEARTS", "DIAMONDS"};
 		 int [] points = new int [ranks.length];

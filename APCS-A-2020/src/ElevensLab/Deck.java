@@ -34,16 +34,16 @@ private ArrayList <Card> temp;
 				cards.add(new Card(ranks[j], suits[i], points[j]));
 			}
 		}
-		temp = (ArrayList<Card>) cards;
+		//temp = (ArrayList<Card>) cards;
 	}
 	// make a dealCard() method that returns the top card
 
 	// isEmpty
 	public boolean isEmpty() {
 		if (cards.size() > 0) {
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 	// size: returns the number of cards in the deck that are left to be dealt
@@ -53,10 +53,12 @@ private ArrayList <Card> temp;
 
 	// deal: removes a card and returns it
 	public Card deal() {
-		if(temp.size() > 0) {
+
+		temp = (ArrayList<Card>) cards;
+		if(!isEmpty()) {
 			Card c = temp.get(temp.size()-1);
-		temp.remove(c);
-		return c;
+			temp.remove(c);
+			return c;
 		}else
 			return null;
 		
