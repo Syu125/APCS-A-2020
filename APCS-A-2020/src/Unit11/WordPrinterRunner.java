@@ -10,6 +10,12 @@ public class WordPrinterRunner
 {
 	public static void main( String args[] )
 	{
+		//test cases
+		/*hello 9
+		funny 6
+		chicken 4
+		dog 1*/
+		
    	Scanner keyboard = new Scanner(System.in);
    	String choice="";
 		do{
@@ -20,7 +26,7 @@ public class WordPrinterRunner
  			int times = keyboard.nextInt();			
 			
 			//call the printWord method
-
+ 			WordPrinter.printWord(word, times);
 			System.out.print("\nDo you want to enter more sample input? ");
 			choice=keyboard.next();			
 		}while(choice.equals("Y")||choice.equals("y"));		

@@ -23,7 +23,8 @@ public class Dog
     {
     	return age;
     }
-    	    	
+    	
+    
     public String toString()
     {
     	return "" + age + " " + name;
