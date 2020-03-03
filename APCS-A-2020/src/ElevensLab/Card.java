@@ -59,4 +59,11 @@ public class Card
 	public String toString() {
 		return rank + " of " + suit + " (point value = " + point + ")";
 	}
+	public boolean matches(Card card) {
+		// TODO Auto-generated method stub
+		if(rank.equals(card.getRank()) && (point == card.getPoint()) && (suit.equals(card.getSuit()) )) {
+			return true;
+		}
+		return false;
+	}
  }

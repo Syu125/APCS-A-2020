@@ -34,7 +34,12 @@ private ArrayList <Card> temp;
 				cards.add(new Card(ranks[j], suits[i], points[j]));
 			}
 		}
+		temp = new ArrayList <Card>();
+		for(int i = 0; i < cards.size(); i++) {
+			temp.add(cards.get(i));
+		}
 		//temp = (ArrayList<Card>) cards;
+		
 	}
 	// make a dealCard() method that returns the top card
 
@@ -53,12 +58,12 @@ private ArrayList <Card> temp;
 
 	// deal: removes a card and returns it
 	public Card deal() {
-
-		temp = (ArrayList<Card>) cards;
 		if(!isEmpty()) {
 			Card c = temp.get(temp.size()-1);
 			temp.remove(c);
+
 			return c;
+			
 		}else
 			return null;
 		
@@ -67,8 +72,28 @@ private ArrayList <Card> temp;
 
 	// write a shuffle() method
 	public void Shuffle() {
+		//Deck Tester
+		/*int ran = 0;
+		for (int i = cards.size()-1; i >= 0; i --) {
+			ran = (int) (Math.random() * (i +1));
+			Card temp = cards.get(ran);
+			cards.set(ran,cards.get(i)) ;
+			cards.set(i, temp);
+		}*/
+		//Deck Runner
 		Collections.shuffle(cards);
+		temp = new ArrayList <Card>();
+		for(int i = 0; i < cards.size(); i++) {
+			temp.add(cards.get(i));
+		}
 	}
-	// use Colletions.shuffle
+	
 	// reset the top card
+	public String toString() {
+		String send = "";
+		for(Card c : cards) {
+			send += c.toString() + "\n";
+		}
+		return send;
+	}
 }
