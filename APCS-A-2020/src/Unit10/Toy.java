@@ -18,7 +18,7 @@ public class Toy
 
 	public Toy( String nm )
 	{
-		name = "plush";
+		name = nm;
 		count = 1;
 	}
 	

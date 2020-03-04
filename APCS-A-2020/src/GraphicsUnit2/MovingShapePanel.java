@@ -15,10 +15,14 @@ import java.awt.Canvas;
 import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MovingShapePanel extends JPanel implements Runnable
 {
 	private Shape sh;
+	private Shape sh2;
+	private Shape sh3;
+	private ArrayList <Shape> shapes;
 
 	public MovingShapePanel()
 	{
@@ -27,6 +31,14 @@ public class MovingShapePanel extends JPanel implements Runnable
 
 		//refer sh to a new Shape
 		sh = new Shape(100,100,100,100,Color.blue, 1,2);
+		sh2 = new Shape(200,350,200,530,Color.pink, 30,10);
+		sh3 = new Shape(20,100,100,100,Color.cyan, 2,6);
+		
+		shapes = new ArrayList <Shape>();
+		shapes.add(sh);
+		shapes.add(sh2);
+		shapes.add(sh3);
+		
 		new Thread(this).start();
 	}
 
@@ -45,21 +57,24 @@ public class MovingShapePanel extends JPanel implements Runnable
 		window.drawString("CREATE YOUR OWN SHAPE!",40,40);
 
 		//tell sh to move and draw
-		sh.moveAndDraw(window);
-		
-		//this code handles the left and right walls
-		if(!(sh.getX()>=10 && sh.getX()<=500))
-		{
-			System.out.println("hi");
-			sh.setXSpeed(-sh.getXSpeed());
-		}
-		
+		//sh.moveAndDraw(window);
+		for(Shape s : shapes) {
+			s.moveAndDraw(window);
+			//this code handles the left and right walls
+			if(!(s.getX()>=10 && s.getX()<=500))
+			{
+				System.out.println("hi");
+				s.setXSpeed(-s.getXSpeed());
+			}
+			
 
-		//add code to handle the top and bottom walls
-		if(!(sh.getY()>=10 && sh.getY()<=440))
-		{
-			sh.setYSpeed(-sh.getYSpeed());
+			//add code to handle the top and bottom walls
+			if(!(s.getY()>=10 && s.getY()<=440))
+			{
+				s.setYSpeed(-s.getYSpeed());
+			}
 		}
+		
 	}
 
    public void run()

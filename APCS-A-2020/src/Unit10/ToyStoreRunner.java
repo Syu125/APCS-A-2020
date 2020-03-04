@@ -12,6 +12,10 @@ public class ToyStoreRunner
 {
 	public static void main( String args[] )
 	{
-
-	}
+		//test cases
+	/*
+	 * sorry bat sorry sorry sorry train train teddy teddy ball ball
+	 */
+		ArrayList <Toy> toys = new ArrayList <Toy>();
+		} 
 }
