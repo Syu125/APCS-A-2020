@@ -15,19 +15,35 @@ public class ToyStore
 
 	public ToyStore()
 	{
+		toyList = new ArrayList<Toy>();
+	}
+	public ToyStore(ArrayList <Toy> list) {
+		toyList = list;
 	}
 
 	public void loadToys( String toys )
 	{
+		toyList = new ArrayList<Toy>();
+		toyList.add(new Toy(toys));
 	}
   
   	public Toy getThatToy( String nm )
   	{
-  		return null;
+  		Toy t = new Toy("");
+  		for(Toy toy: toyList) {
+  			if(toy.getName().equals(nm)) {
+  				t =  toy;
+  				toy.setCount(toy.getCount()+1);
+  			}
+  		}
+  		t.setCount(t.getCount()-1);
+  		
+  		return t;
   	}
   
   	public String getMostFrequentToy()
   	{
+  		
   		return "";
   	}  
   
