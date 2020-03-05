@@ -1,5 +1,6 @@
 package Unit10;
 //(c) A+ Computer Science
+
 //www.apluscompsci.com
 //Name -
 
@@ -9,50 +10,62 @@ import java.util.ArrayList;
 import java.util.Collections;
 import static java.lang.System.*;
 
-public class ToyStore
-{
+public class ToyStore {
 	private ArrayList<Toy> toyList;
+	private ArrayList<Toy> order;
 
-	public ToyStore()
-	{
+	public ToyStore() {
 		toyList = new ArrayList<Toy>();
 	}
-	public ToyStore(ArrayList <Toy> list) {
+
+	public ToyStore(ArrayList<Toy> list) {
+		order = new ArrayList<Toy>();
 		toyList = list;
+		System.out.println(toyList.get(0));
+		//order.add(toyList.get(0));
+		for (int i = 1; i < toyList.size(); i++) {
+			for (Toy t : order) {
+				if (!toyList.get(i).getName().equals(t.getName())) {
+					order.add(t);
+				}
+			}
+		}
+		for (Toy t : order) {
+			int count = 0;
+			Toy to = new Toy("");
+			for (Toy toy : toyList) {
+				if (toy.getName().equals(t.getName())) {
+					to = toy;
+					count++;
+				}
+			}
+			t.setCount(count);
+		}
 	}
 
-	public void loadToys( String toys )
-	{
+	public void loadToys(String toys) {
 		toyList = new ArrayList<Toy>();
 		toyList.add(new Toy(toys));
 	}
-  
-  	public Toy getThatToy( String nm )
-  	{
-  		Toy t = new Toy("");
-  		for(Toy toy: toyList) {
-  			if(toy.getName().equals(nm)) {
-  				t =  toy;
-  				toy.setCount(toy.getCount()+1);
-  			}
-  		}
-  		t.setCount(t.getCount()-1);
-  		
-  		return t;
-  	}
-  
-  	public String getMostFrequentToy()
-  	{
-  		
-  		return "";
-  	}  
-  
-  	public void sortToysByCount()
-  	{
-  	}  
-  	  
-	public String toString()
-	{
-	   return "";
+
+	public Toy getThatToy(String nm) {
+		for(Toy t: order) {
+			if(t.getName().equals(nm))
+				return t;
+		}
+		return null;
+	}
+
+	public String getMostFrequentToy() {
+
+		return "";
+	}
+
+	public void sortToysByCount() {
+	}
+
+	public String toString() {
+
+		return "";
 	}
 }

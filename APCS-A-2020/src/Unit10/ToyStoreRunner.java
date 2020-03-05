@@ -18,9 +18,11 @@ public class ToyStoreRunner
 	 * sorry bat sorry sorry sorry train train teddy teddy ball ball
 	 */
 		ArrayList <Toy> toys;
-		Toy [] t = {new Toy("sorry"), new Toy( "bat"), new Toy("sorry"), new Toy("sorry"), new Toy(" sorry"), new Toy(" train"),  new Toy("train"), new Toy(" teddy"), new Toy(" teddy"), new Toy(" ball"), new Toy(" ball")};
+		ToyStore tStore = new ToyStore();
+		
+		Toy [] t = {new Toy("sorry"), new Toy("bat"), new Toy("sorry"), new Toy("sorry"), new Toy("sorry"), new Toy("train"),  new Toy("train"), new Toy("teddy"), new Toy("teddy"), new Toy("ball"), new Toy("ball")};
 		toys = new ArrayList <Toy>( Arrays.asList(t));
-		ToyStore tStore = new ToyStore(toys);
-		System.out.println(tStore.getThatToy("train"));
+		tStore = new ToyStore(toys);
+		System.out.println(tStore.getThatToy("sorry"));
 	} 
 }
