@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 public class CelebrityPanel extends JPanel
 {
 
+	private String currentGuess;
 	/**
 	 * The button pressed when making a guess.
 	 */
@@ -274,7 +275,6 @@ public class CelebrityPanel extends JPanel
 	{
 		clueArea.setText("The clue is: " + clue);
 		seconds = 60;
-		dynamicTimerLabel.setForeground(Color.BLACK);
 		countdownTimer.restart();
 		staticTimerLabel.setText("Time remaining: ");
 		guessButton.setEnabled(true);
@@ -287,13 +287,14 @@ public class CelebrityPanel extends JPanel
 	 */
 	private void updateScreen()
 	{
-		String currentGuess = guessField.getText();
+		currentGuess = guessField.getText();
 		clueArea.append("\nYou guessed: " + currentGuess + "\n");
 
 		if (controller.processGuess(currentGuess))
 		{
 			clueArea.append(success + controller.sendClue());
 			clueArea.setBackground(Color.CYAN);
+			currentGuess = "";
 		}
 		else
 		{

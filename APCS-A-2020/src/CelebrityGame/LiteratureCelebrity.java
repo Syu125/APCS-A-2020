@@ -18,12 +18,17 @@ public class LiteratureCelebrity extends Celebrity
 	 * @param answer The literature celebrity
 	 * @param clues Clues for the literature celebrity 
 	 */
+	
 	public LiteratureCelebrity(String answer, String clues)
 	{
 		super(answer, clues);
 		processClues();
 	}
 	
+	
+	
+
+
 	/**
 	 * Processes the series of clues for the LiteratureCelebrity by adding all the values to an ArrayList<String> by
 	 * splitting the original clue to an array of String.
@@ -46,6 +51,7 @@ public class LiteratureCelebrity extends Celebrity
 	@Override
 	public String getClue()
 	{
+		System.out.println("hi");
 		if (clueList.size() == 0)
 		{
 			processClues();

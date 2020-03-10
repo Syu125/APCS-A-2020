@@ -45,6 +45,7 @@ public class CelebrityGame {
 	 * @return Whether it matches regardless of case or extraneous external spaces.
 	 */
 	public boolean processGuess(String guess) {
+		System.out.println("name: " + gameCelebrity.getAnswer());
 		return guess.contentEquals(gameCelebrity.getAnswer());
 	}
 
@@ -54,9 +55,10 @@ public class CelebrityGame {
 	 * screen.
 	 */
 	public void play() {
-		if(celebGameList.size() > 0) {
+		if (celebGameList.size() > 0 && celebGameList != null) {
 			gameCelebrity = celebGameList.get(0);
-			StartPanel sp = new StartPanel(this);
+			gameWindow.replaceScreen("GAME");
+
 		}
 	}
 
@@ -68,7 +70,20 @@ public class CelebrityGame {
 	 * @param type  What type of celebrity
 	 */
 	public void addCelebrity(String name, String guess, String type) {
-		celebGameList.add(new Celebrity(name, guess));
+		switch (type) {
+		case "Literature":
+			celebGameList.add(new LiteratureCelebrity(name, guess));
+			gameCelebrity = new LiteratureCelebrity(name, guess);
+			break;
+		case "Sports":
+			celebGameList.add(new SportsCelebrity(name, guess));
+			gameCelebrity = new SportsCelebrity(name, guess);
+			break;
+		case "Celebrity":
+			celebGameList.add(new Celebrity(name, guess));
+			gameCelebrity = new Celebrity(name, guess);
+			break;
+		}
 	}
 
 	/**
@@ -95,9 +110,11 @@ public class CelebrityGame {
 	 */
 	public boolean validateClue(String clue, String type) {
 		clue = clue.trim();
-		if (clue.length() >= 10 || clue.contains(" ")) {
+		if (clue.length() >= 10 || clue.contains(",")) {
 			return true;
+
 		}
+
 		return false;
 	}
 
