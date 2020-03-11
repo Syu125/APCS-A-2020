@@ -9,6 +9,7 @@ public class SportsCelebrity extends Celebrity{
 	public SportsCelebrity(String answer, String clue) {
 		super(answer, clue);
 		// TODO Auto-generated constructor stub
+	processClues();
 	}
 	
 

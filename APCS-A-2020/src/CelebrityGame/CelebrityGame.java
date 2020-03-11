@@ -78,6 +78,7 @@ public class CelebrityGame {
 		case "Sports":
 			celebGameList.add(new SportsCelebrity(name, guess));
 			gameCelebrity = new SportsCelebrity(name, guess);
+			
 			break;
 		case "Celebrity":
 			celebGameList.add(new Celebrity(name, guess));
