@@ -69,7 +69,7 @@ public class ToyStore
 				for(int i = 0; i < count-1; i++) {
 					sortedList.remove(sortedList.indexOf(t));
 				}
-			}
+			}//
 		}
 		toyList = sortedList;
   	}  

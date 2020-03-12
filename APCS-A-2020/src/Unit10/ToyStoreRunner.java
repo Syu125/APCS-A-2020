@@ -13,7 +13,7 @@ public class ToyStoreRunner
 {
 	public static void main( String args[] )
 	{
-		//test cases
+		//test case
 	/*
 	 * sorry bat sorry sorry sorry train train teddy teddy ball ball
 	 */
@@ -25,5 +25,6 @@ public class ToyStoreRunner
 		System.out.println("max: " + tStore.getMostFrequentToy());
 		tStore.sortToysByCount();
 		System.out.println(tStore);
+	
 	} 
 }
