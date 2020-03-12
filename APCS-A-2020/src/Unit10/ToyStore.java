@@ -12,6 +12,7 @@ import static java.lang.System.*;
 public class ToyStore
 {
 	private ArrayList<Toy> toyList;
+	private ArrayList <Toy> sortedList;
 
 	public ToyStore()
 	{
@@ -36,23 +37,45 @@ public class ToyStore
   				toy.setCount(toy.getCount()+1);
   			}
   		}
-  		t.setCount(t.getCount()-1);
+  		t.setCount(t.getCount());
   		
   		return t;
   	}
   
   	public String getMostFrequentToy()
   	{
-  		
-  		return "";
+  		Toy most = toyList.get(0);
+  		for(Toy t: toyList) {
+  			if(t.getCount() > most.getCount()){
+  				most = t;
+  			}
+  		}
+  		return most.getName();
   	}  
   
   	public void sortToysByCount()
   	{
+  		for(Toy t: toyList) {
+			sortedList.add(getThatToy(t.getName()));
+		}
+		for(Toy t: sortedList) {
+			int count = 1;
+			for(Toy toy: sortedList){
+				if(toy.equals(t)) {
+					count++;
+				}
+			}
+			if(count > 1) {
+				for(int i = 0; i < count-1; i++) {
+					sortedList.remove(sortedList.indexOf(t));
+				}
+			}
+		}
+		toyList = sortedList;
   	}  
   	  
 	public String toString()
 	{
-	   return "";
+	   return toyList.toString();
 	}
 }
