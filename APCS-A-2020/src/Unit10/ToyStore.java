@@ -17,6 +17,8 @@ public class ToyStore
 	public ToyStore()
 	{
 		toyList = new ArrayList<Toy>();
+		sortedList = new ArrayList<Toy>();
+		
 	}
 	public ToyStore(ArrayList <Toy> list) {
 		toyList = list;
@@ -50,28 +52,28 @@ public class ToyStore
   				most = t;
   			}
   		}
-  		return most.getName();
+  		return "hi";
   	}  
   
   	public void sortToysByCount()
   	{
-  		for(Toy t: toyList) {
+  		/*for(Toy t: toyList) {
 			sortedList.add(getThatToy(t.getName()));
-		}
-		for(Toy t: sortedList) {
+		}*/
+		for(Toy t: toyList) {
 			int count = 1;
-			for(Toy toy: sortedList){
+			for(Toy toy: toyList){
 				if(toy.equals(t)) {
 					count++;
 				}
 			}
 			if(count > 1) {
 				for(int i = 0; i < count-1; i++) {
-					sortedList.remove(sortedList.indexOf(t));
+					toyList.remove(toyList.indexOf(t));
 				}
-			}//
+			}
 		}
-		toyList = sortedList;
+		//toyList = sortedList;
   	}  
   	  
 	public String toString()
