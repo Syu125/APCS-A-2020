@@ -52,28 +52,20 @@ public class ToyStore
   				most = t;
   			}
   		}
-  		return "hi";
+  		return most.getName();
   	}  
   
   	public void sortToysByCount()
-  	{
-  		/*for(Toy t: toyList) {
-			sortedList.add(getThatToy(t.getName()));
-		}*/
-		for(Toy t: toyList) {
-			int count = 1;
-			for(Toy toy: toyList){
-				if(toy.equals(t)) {
-					count++;
-				}
-			}
-			if(count > 1) {
-				for(int i = 0; i < count-1; i++) {
-					toyList.remove(toyList.indexOf(t));
-				}
-			}
-		}
-		//toyList = sortedList;
+	{
+  		for(Toy t: toyList) {
+  			if()
+  		}
+  		/*
+		 * sortedList = toyList; for(Toy t: toyList) {
+		 * t.setCount(getThatToy(t.getName()).getCount()); } for(Toy t: toyList) { int
+		 * count = 1; for(Toy toy: toyList){ if(toy.getName().equals(t.getName())) {
+		 * count++; } } if(count > 1) { sortedList.add(t); } } toyList = sortedList;
+		 */
   	}  
   	  
 	public String toString()

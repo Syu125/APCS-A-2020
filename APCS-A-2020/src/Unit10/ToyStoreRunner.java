@@ -20,7 +20,9 @@ public class ToyStoreRunner
 		ArrayList <Toy> toys;
 		Toy [] t = {new Toy("sorry"), new Toy( "bat"), new Toy("sorry"), new Toy("sorry"), new Toy(" sorry"), new Toy(" train"),  new Toy("train"), new Toy(" teddy"), new Toy(" teddy"), new Toy(" ball"), new Toy(" ball")};
 		toys = new ArrayList <Toy>( Arrays.asList(t));
-		ToyStore tStore = new ToyStore(toys);
+		
+		ToyStore tStore = new ToyStore();
+		tStore = new ToyStore(toys);
 		System.out.println(tStore.getThatToy("train"));
 		
 		System.out.println("max: " + tStore.getMostFrequentToy());
