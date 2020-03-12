@@ -28,7 +28,7 @@ public class ToyStoreRunner
 		System.out.println("max: " + tStore.getMostFrequentToy());
 		tStore.sortToysByCount();
 		System.out.println(tStore);
-		System.out.println(myName);
+		System.out.println(tStore.myName());
 	
 	} 
 }
