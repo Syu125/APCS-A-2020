@@ -13,7 +13,7 @@ public class ToyStoreRunner
 {
 	public static void main( String args[] )
 	{
-		//test case
+		//test cases
 	/*
 	 * sorry bat sorry sorry sorry train train teddy teddy ball ball
 	 */
