@@ -9,18 +9,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import static java.lang.System.*;
 
-public class ToyStore
+public class ToyStore26
 {
 	private ArrayList<Toy> toyList;
-	private ArrayList <Toy> sortedList;
 
-	public ToyStore()
+	public ToyStore26()
 	{
 		toyList = new ArrayList<Toy>();
-		sortedList = new ArrayList<Toy>();
 		
 	}
-	public ToyStore(ArrayList <Toy> list) {
+	public ToyStore26(ArrayList <Toy> list) {
 		toyList = list;
 	}
 
@@ -58,7 +56,6 @@ public class ToyStore
   	public void sortToysByCount()
 	{
   		for(Toy t: toyList) {
-  			if()
   		}
   		/*
 		 * sortedList = toyList; for(Toy t: toyList) {
@@ -72,4 +69,7 @@ public class ToyStore
 	{
 	   return toyList.toString();
 	}
+	public String myName(){
+		return "Sophia Yu";
+		}
 }

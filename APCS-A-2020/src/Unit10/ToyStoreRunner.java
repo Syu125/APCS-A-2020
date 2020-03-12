@@ -21,13 +21,14 @@ public class ToyStoreRunner
 		Toy [] t = {new Toy("sorry"), new Toy( "bat"), new Toy("sorry"), new Toy("sorry"), new Toy(" sorry"), new Toy(" train"),  new Toy("train"), new Toy(" teddy"), new Toy(" teddy"), new Toy(" ball"), new Toy(" ball")};
 		toys = new ArrayList <Toy>( Arrays.asList(t));
 		
-		ToyStore tStore = new ToyStore();
-		tStore = new ToyStore(toys);
+		ToyStore26 tStore = new ToyStore26();
+		tStore = new ToyStore26(toys);
 		System.out.println(tStore.getThatToy("train"));
 		
 		System.out.println("max: " + tStore.getMostFrequentToy());
 		tStore.sortToysByCount();
 		System.out.println(tStore);
+		System.out.println(myName);
 	
 	} 
 }
