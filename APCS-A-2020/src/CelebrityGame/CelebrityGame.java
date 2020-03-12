@@ -45,7 +45,6 @@ public class CelebrityGame {
 	 * @return Whether it matches regardless of case or extraneous external spaces.
 	 */
 	public boolean processGuess(String guess) {
-		System.out.println("name: " + gameCelebrity.getAnswer());
 		return guess.contentEquals(gameCelebrity.getAnswer());
 	}
 
@@ -57,11 +56,14 @@ public class CelebrityGame {
 	public void play() {
 		if (celebGameList.size() > 0 && celebGameList != null) {
 			gameCelebrity = celebGameList.get(0);
+			System.out.println("Game Celeb: " + gameCelebrity.getAnswer());
 			gameWindow.replaceScreen("GAME");
-
 		}
 	}
 
+	public ArrayList<Celebrity> getCelebList() {
+		return celebGameList;
+	}
 	/**
 	 * Adds a Celebrity of specified type to the game list
 	 * 

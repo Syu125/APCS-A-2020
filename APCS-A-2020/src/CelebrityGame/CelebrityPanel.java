@@ -273,7 +273,7 @@ public class CelebrityPanel extends JPanel
 	 */
 	public void addClue(String clue)
 	{
-		clueArea.setText("The clue is: " + clue);
+		clueArea.setText("The clue is: " + clue+"\n");
 		seconds = 60;
 		countdownTimer.restart();
 		staticTimerLabel.setText("Time remaining: ");
@@ -289,9 +289,11 @@ public class CelebrityPanel extends JPanel
 	{
 		currentGuess = guessField.getText();
 		clueArea.append("\nYou guessed: " + currentGuess + "\n");
-
 		if (controller.processGuess(currentGuess))
 		{
+			controller.getCelebList().remove(0);
+			controller.play();
+			
 			clueArea.append(success + controller.sendClue());
 			clueArea.setBackground(Color.CYAN);
 			currentGuess = "";
