@@ -9,16 +9,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import static java.lang.System.*;
 
-public class ToyStore26
+public class ToyStore24
 {
 	private ArrayList<Toy> toyList;
 
-	public ToyStore26()
+	public ToyStore24()
 	{
 		toyList = new ArrayList<Toy>();
 		
 	}
-	public ToyStore26(ArrayList <Toy> list) {
+	public ToyStore24(ArrayList <Toy> list) {
 		toyList = list;
 	}
 

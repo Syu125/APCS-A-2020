@@ -56,7 +56,6 @@ public class CelebrityGame {
 	public void play() {
 		if (celebGameList.size() > 0 && celebGameList != null) {
 			gameCelebrity = celebGameList.get(0);
-			System.out.println("Game Celeb: " + gameCelebrity.getAnswer());
 			gameWindow.replaceScreen("GAME");
 		}
 	}

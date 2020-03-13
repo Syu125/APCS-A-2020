@@ -136,7 +136,7 @@ public class StartPanel extends JPanel
 		this.sportsRadio = new JRadioButton("Sports Celebrity");
 		this.celebrityClue = "Enter the clue for the celebrity";
 		this.literatureClue = "Enter the clues for the literature celeb separated by commas";
-		this.sportsClue = "Enter the clues for the sports literature celeb separated by commas";
+		this.sportsClue = "Enter the clues for the sports celeb separated by commas";
 		this.clueLabel = new JLabel(celebrityClue);
 		
 		this.answerField = new JTextField("Type celebrity here (4 letters minimum thx Cher)");
