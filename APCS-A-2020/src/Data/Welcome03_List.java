@@ -19,10 +19,18 @@ public class Welcome03_List {
       System.out.println("Enter a state abbreviation: ");
       String state = sc.next();
       System.out.println("Stations in " + state);
+      WeatherStation mostSouth =  allstns.get(0);
+      double lat = mostSouth.getLatitude();
       for (WeatherStation ws : allstns) {
+    	  if(ws.getLatitude() < lat) {
+    		  lat = ws.getLatitude();
+    		  mostSouth = ws;
+    	  }
          if (ws.isLocatedInState(state)) {
             System.out.println("  " + ws.getId() + ": " + ws.getName());
          }
       }
+      System.out.println("Furthest South: " + mostSouth.getName());
+      
    }
 }
