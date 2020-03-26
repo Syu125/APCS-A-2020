@@ -1,5 +1,6 @@
 package Unit13;
 //(c) A+ Computer Science
+
 //www.apluscompsci.com
 //Name -
 
@@ -9,13 +10,29 @@ import java.io.File;
 import java.io.IOException;
 import static java.lang.System.*;
 
-public class NumberShifter
-{
-	public static int[] makeLucky7Array( int size)
-	{
-		return null;
+public class NumberShifter {
+	public static int[] makeLucky7Array(int size) {
+		int[] list = new int[size];
+		int i = (int) (Math.random() * 10 + 1);
+		for (int j = 0; j < size; j++) {
+			list[j] = i;
+			i = (int) (Math.random() * 10 + 1);
+		}
+
+		return list;
 	}
-	public static void shiftEm(int[] array)
-	{
+
+	public static void shiftEm(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			int j = i;
+			while (j < array.length && array[j] != 7) {
+				j++;
+			}
+			if (j != i && j < array.length) {
+				int t = array[j];
+				array[j] = array[i];
+				array[i] = t;
+			}
+		}
 	}
 }
