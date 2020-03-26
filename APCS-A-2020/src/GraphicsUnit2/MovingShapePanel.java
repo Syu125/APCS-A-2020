@@ -31,7 +31,7 @@ public class MovingShapePanel extends JPanel implements Runnable
 
 		//refer sh to a new Shape
 		sh = new Shape(100,100,100,100,Color.blue, 1,2);
-		sh2 = new Shape(200,350,200,530,Color.pink, 30,10);
+		sh2 = new Shape(200,350,200,330,Color.pink, 10,10);
 		sh3 = new Shape(20,100,100,100,Color.cyan, 2,6);
 		
 		shapes = new ArrayList <Shape>();
