@@ -114,7 +114,7 @@ public abstract class Board {
 	/**
 	 * Gets the indexes of the actual (non-null) cards on the board.
 	 *
-	 * @return a List that contains the locations (indexes)
+	 * @return a List that  the locations (indexes)
 	 *         of the non-null entries on the board.
 	 */
 	public List<Integer> cardIndexes() {
