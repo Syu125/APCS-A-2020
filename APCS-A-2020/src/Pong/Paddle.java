@@ -52,13 +52,16 @@ public class Paddle extends Block {
 	}
 
 	public void moveUpAndDraw(Graphics window) {
-		this.setyPos(getyPos() - speed);
-		this.draw(window);
+		draw(window, Color.WHITE);
+		setyPos(getyPos() - speed);
+		draw(window);
+		
 	}
 
 	public void moveDownAndDraw(Graphics window) {
-		this.setyPos(getyPos() + speed);
-		this.draw(window);
+		draw(window, Color.WHITE);
+		setyPos(getyPos() + speed);
+		draw(window);
 	}
 
 	// add a toString() method
