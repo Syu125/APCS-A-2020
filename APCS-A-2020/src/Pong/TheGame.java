@@ -62,10 +62,10 @@ public class TheGame extends JFrame
 		   		   first = false;
 	   		}else {
 	   			Thread.currentThread().sleep(8);
-	   		   game.changeFrameWidth(this.getWidth());
-	   		   game.changeFrameHeight(this.getHeight());
-	   		   this.setSize(this.getWidth(),this.getHeight());
-	   		   setVisible(true);
+	   		   setSize(getWidth(),getHeight());
+	   		   game.changeFrameWidth(getWidth());
+	   		   game.changeFrameHeight(getHeight());
+	   		   //setVisible(true);
 	   		}
 	   		   
 	   		}

@@ -74,23 +74,32 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 
 		// take a snap shop of the current screen and same it as an image
 		// that is the exact same width and height as the current screen
-		if (back == null)
-			back = (BufferedImage) (createImage(frameWidth+300, frameHeight+300));
+			back = (BufferedImage) (createImage(frameWidth, frameHeight));
 
 		// create a graphics reference to the back ground image
 		// we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
 
 		graphToBack.setColor(Color.RED);
-		graphToBack.drawString("leftScore: " + leftScore, 680, 480);
-		graphToBack.drawString("rightScore: " + rightScore, 680, 500);
-
+		graphToBack.drawString("leftScore: " + leftScore, getWidth()-80, getHeight()-40);
+		graphToBack.drawString("rightScore: " + rightScore, getWidth()-80, getHeight()-20);
+		
+		leftPaddle.setHeight(frameHeight/10);
+		rightPaddle.setHeight(frameHeight/10);
+		
+		leftPaddle.setWidth(leftPaddle.getHeight()/7);
+		rightPaddle.setWidth(rightPaddle.getHeight()/7);
+		
+		ball.setWidth(frameWidth/70);
+		ball.setHeight(frameWidth/70);
+		
 		rightPaddle.erase(graphToBack);
-		System.out.println(frameWidth);
 		rightPaddle.setX(frameWidth - 50);
 		ball.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
+		 
+		
 
 		left.setHeight(getHeight());
 		right.setHeight(getHeight());
@@ -109,20 +118,16 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 		}
 
 		// see if ball hits left wall or right wall
-		if (!(ball.getX() >= 10 && ball.getX() <= frameWidth-20)) {
-			if (ball.getX() < 10 && !crossLeft) {
+		if (!(ball.getX() >= 10 && ball.getX() <= frameWidth - 20)) {
+			if (ball.getX() <= 10) {
 				rightScore++;
-				leftWin = true;
-				// crossLeft = true;
-				// crossRight = false;
+				leftWin = false;
 				graphToBack.setColor(Color.WHITE);
 				graphToBack.fillRect(740, 480, 30, 30);
 			}
-			if (ball.getX() > 760 && !crossRight) {
+			if (ball.getX() > frameWidth-20) {
 				leftScore++;
 				leftWin = true;
-				// crossRight = true;
-				// crossLeft = false;
 				graphToBack.setColor(Color.WHITE);
 				graphToBack.fillRect(730, 460, 30, 30);
 			}
@@ -134,18 +139,18 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 				ball.setYSpeed(((int) (Math.random() * 2) + 1));
 			} else {
 				ball.setXSpeed(((int) (Math.random() * 2) + 1) * -1);
-				ball.setYSpeed(((int) (Math.random() * 2) + 1) * -1);
+				ball.setYSpeed(((int) (Math.random() * 2) + 1));
 			}
 
 		}
 
 		// see if the ball hits the top or bottom wall
-		/*
-		 * if(!(ball.getY()>=10 && ball.getY()<=530)) {
-		 * ball.setYSpeed(-ball.getYSpeed()); increaseSpeed();
-		 * 
-		 * }
-		 */
+		if (!(ball.getY() >= 0 && ball.getY() <= frameHeight-70)) {
+			ball.setYSpeed(-ball.getYSpeed());
+			increaseSpeed();
+
+		}
+
 		if (ball.didCollideLeft(leftPaddle) || ball.didCollideRight(leftPaddle) || ball.didCollideTop(leftPaddle)
 				|| ball.didCollideBottom(leftPaddle)) {
 
@@ -194,6 +199,7 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 		}
 
 		twoDGraph.drawImage(back, null, 0, 0);
+		
 	}
 
 	public void keyPressed(KeyEvent e) {
