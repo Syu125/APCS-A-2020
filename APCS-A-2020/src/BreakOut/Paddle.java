@@ -1,6 +1,6 @@
-package Pong;
+package BreakOut;
 //(c) A+ Computer Science
-
+//BREAKOUT
 //www.apluscompsci.com
 //Name -
 
@@ -10,7 +10,7 @@ import java.awt.Graphics;
 public class Paddle extends Block {
 	// instance variables
 	private int speed;
-	private TheGame tg = new TheGame("get");
+	private TheGame tg =  new TheGame("get");
 
 	public Paddle() {
 		super(10, 10);
@@ -52,21 +52,17 @@ public class Paddle extends Block {
 		this.speed = speed;
 	}
 
-	public void moveUpAndDraw(Graphics window) {
+	public void moveLeftAndDraw(Graphics window) {
 		draw(window, Color.WHITE);
-		setyPos(getyPos() - speed);
+		setxPos(getxPos() - speed);
 		draw(window);
-
+		
 	}
 
-	public void moveDownAndDraw(Graphics window) {
-		draw(window, Color.WHITE);
-		setyPos(getyPos() + speed);
-		draw(window);
-	}
-
-	public void erase(Graphics window) {
-		draw(window, Color.WHITE);
+	public void moveRightAndDraw(Graphics window) {
+			draw(window, Color.WHITE);
+			setxPos(getxPos() + speed);
+			draw(window);
 	}
 
 	// add a toString() method

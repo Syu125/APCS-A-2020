@@ -1,4 +1,4 @@
-package Pong;
+package BreakOut;
 //(c) A+ Computer Science
 
 //www.apluscompsci.com
@@ -75,6 +75,12 @@ public class Ball extends Block implements Collidable{
 		return false;
 	}
 
+	public boolean collide (Block b) {
+		if(b.getY()+2 >= getY() && b.getX() <= getX() && b.getX() + b.getWidth()+1 >= getX()) {
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public boolean didCollideLeft(Object obj) {
 		// TODO Auto-generated method stub
