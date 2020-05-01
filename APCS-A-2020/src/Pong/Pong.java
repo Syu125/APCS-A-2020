@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JLabel;
 
@@ -35,6 +36,7 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 	private Wall left, right, top, bottom;
 	private int frameWidth;
 	private int frameHeight;
+	private boolean hide = false;
 
 	public Pong() {
 		// set up all variables related to the game
@@ -59,6 +61,8 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 		setBackground(Color.WHITE);
 		setVisible(true);
 
+		t.schedule(new updateTask(), 7000,10000);
+		
 		new Thread(this).start();
 		addKeyListener(this); // starts the key thread to log key strokes
 	}
@@ -272,8 +276,37 @@ public class Pong extends Canvas implements KeyListener, Runnable {
 			while (true) {
 				Thread.currentThread().sleep(8);
 				repaint();
+				if(!hide) {
+					ball.setColor(ball.randomColor());
+				}
 			}
 		} catch (Exception e) {
 		}
 	}
+	class updateTask extends TimerTask{
+		
+		@Override
+		public void run() {
+			long t = System.currentTimeMillis();
+			long end = t + 3000;
+			while(System.currentTimeMillis() < end) {
+		
+				ball.setColor(Color.WHITE);
+				hide  = true;
+				try {
+					Thread.sleep(8);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			hide = false;
+			ball.setColor(ball.randomColor());
+			
+			
+			
+		}
+		
+	}
+	
 }

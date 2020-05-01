@@ -61,7 +61,7 @@ class BlinkyBall extends Ball
 		// setY
 		setY(getY() + getYSpeed());
 		// draw the ball at its new location
-		window.setColor(randomColor());
+		window.setColor(getColor());
 		window.fillRect(getX(), getY(),getWidth(), getHeight());
 
 
