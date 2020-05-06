@@ -109,6 +109,9 @@ public abstract class AbstractShape
    	return height;
    }
 
+   public void setColor(Color c) {
+	   color = c;
+   }
    public abstract void draw(Graphics window);
 
    public abstract void moveAndDraw(Graphics window);
