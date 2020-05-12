@@ -40,6 +40,11 @@ public class CheckDigit
 	public static boolean isValid(int numWithCheckDigit)
    {   
    	//WRITE CODE FOR THIS METHOD
+		int rightNum =  numWithCheckDigit%10;
+		int cutNum = numWithCheckDigit/10;
+		if(getCheck(cutNum) == rightNum) {
+			return true;
+		}
    	return false;
    }
 }
@@ -65,4 +70,8 @@ Make sure to include the following in your response.
 •	Describe, for each new or revised variable, constant, or method, 
 how it would change or be implemented, including visibility and type. 
 
+For this to work, there would need to be a count variable (private int). There are two ways to increment the count: 
+	1. create an else statement (when the getCheck(cutNum) != rightNum) and increment if true
+	2. increment right before the method returns false. This will only increment when the check digit is incorrect because
+	   if it was correct, it would return true before and the method would stop there
 */

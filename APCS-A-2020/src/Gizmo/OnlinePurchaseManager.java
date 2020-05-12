@@ -31,7 +31,13 @@ public class OnlinePurchaseManager
    public int countElectronicsByMaker(String maker)
    {   
    	//WRITE CODE HERE FOR PART A
-   	return 0;   	
+	   int count = 0; 
+	   for(Gizmo g: purchases) {
+		   if(g.getMaker().equals(maker) && g.isElectronic()) {
+			   count++;
+		   }
+	   }
+   	return count;   	
    }
    
 
@@ -44,6 +50,11 @@ public class OnlinePurchaseManager
    public boolean hasAdjacentEqualPair()
    {  
    	//WRITE CODE HERE FOR PART B
+	   for(int i  = 0; i < purchases.size()-1; i++) {
+		   if(purchases.get(i).equals(purchases.get(i+1))) {
+			   return true;
+		   }
+	   }
    	return false;   	
    }
    
@@ -83,5 +94,11 @@ Make sure to include the following in your response.
    You do not need to describe the getCheapestGizmoByMaker method.
    DO NOT write code for this part.
 
+
+In order to get this method to work, I would need to add a (private double) variable in Gizmo that keeps track of the price.
+Along with this variable, there would be setter and getter methods for this variable and it would be added as a parameter
+when instantiating a Gizmo object. 
+getCheapestGizmoMaker would return a Gizmo, take in a string, and the method header would be written like this:
+	public Gizmo getCheapestGizmoByMaker(String maker){}
 */
 
