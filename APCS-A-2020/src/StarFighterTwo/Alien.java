@@ -1,4 +1,4 @@
-package StarFighter;
+package StarFighterTwo;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
@@ -10,43 +10,41 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.imageio.ImageIO;
 
-public class Ship extends MovingThing
+public class Alien extends MovingThing
 {
 	private int speed;
 	private Image image;
 
-	public Ship()
+	public Alien()
 	{
-		this(10,10,10,10,10);
+		this(0,0,30,30,0);
 	}
 
-	public Ship(int x, int y)
+	public Alien(int x, int y)
 	{
-	   super(x, y);
+		super(x, y);
 	}
 
-	public Ship(int x, int y, int s)
+	public Alien(int x, int y, int s)
 	{
 		super(x, y);
 		speed = s;
 	}
 
-	public Ship(int x, int y, int w, int h, int s)
+	public Alien(int x, int y, int w, int h, int s)
 	{
-		super(x, y, w, h);
+		super(x, y, w,h);
 		speed=s;
 		try
 		{
-			URL url = getClass().getResource("/StarFighter/shipUp.jpg");
+			URL url = getClass().getResource("/alien.JPG");
 			image = ImageIO.read(url);
 		}
-		
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 	}
-
 
 	public void setSpeed(int s)
 	{
@@ -58,22 +56,9 @@ public class Ship extends MovingThing
 	   return speed;
 	}
 
-	public void move(String direction)
+   public void move(String direction)
 	{
-		switch(direction) {
-		case("LEFT"):
-			setX(getX()-speed);
-			break;
-		case("RIGHT"):
-			setX(getX()+speed);
-			break;
-		case("UP"):
-			setY(getY()-speed);
-			break;
-		case("DOWN"):
-			setY(getY()+speed);
-			break;
-		}
+	   setY(getY()+getSpeed());
 	}
 
 	public void draw( Graphics window )
@@ -83,6 +68,6 @@ public class Ship extends MovingThing
 
 	public String toString()
 	{
-		return super.toString() + getSpeed();
+		return "";
 	}
 }

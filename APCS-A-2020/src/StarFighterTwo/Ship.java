@@ -1,4 +1,4 @@
-package StarFighter;
+package StarFighterTwo;
 //(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
@@ -37,7 +37,7 @@ public class Ship extends MovingThing
 		speed=s;
 		try
 		{
-			URL url = getClass().getResource("/StarFighter/shipUp.jpg");
+			URL url = getClass().getResource("/StarFighterTwo/shipUp.jpg");
 			image = ImageIO.read(url);
 		}
 		
@@ -63,15 +63,55 @@ public class Ship extends MovingThing
 		switch(direction) {
 		case("LEFT"):
 			setX(getX()-speed);
+		try
+		{
+			URL url = getClass().getResource("/StarFighterTwo/shipLeft.jpg");
+			image = ImageIO.read(url);
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 			break;
 		case("RIGHT"):
 			setX(getX()+speed);
+		try
+		{
+			URL url = getClass().getResource("/StarFighterTwo/shipRight.jpg");
+			image = ImageIO.read(url);
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 			break;
 		case("UP"):
 			setY(getY()-speed);
+		try
+		{
+			URL url = getClass().getResource("/StarFighterTwo/shipUp.jpg");
+			image = ImageIO.read(url);
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 			break;
 		case("DOWN"):
 			setY(getY()+speed);
+		try
+		{
+			URL url = getClass().getResource("/StarFighterTwo/shipBottom.jpg");
+			image = ImageIO.read(url);
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 			break;
 		}
 	}
