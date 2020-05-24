@@ -29,6 +29,12 @@ public class Key {
 	}
 	public void play() {
 		AudioPlayer.player.start(audio);
+		try {
+			audio = new AudioStream(new FileInputStream(new File("src/Final/G/"+key+".wav")));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 	public String getKey() {
 		return key;
