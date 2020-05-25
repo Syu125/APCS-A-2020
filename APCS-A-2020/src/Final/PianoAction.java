@@ -6,8 +6,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -22,6 +24,7 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 	private int gap;
 
 	private Scanner scanner;
+	private FileWriter fileWriter;
 	private BufferedImage back;
 	private final String[] keyboard = { "a" };
 
@@ -34,14 +37,8 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 		gap = getWidth() / 15;
 
 		try {
-			/*scanner = new Scanner(new File("src/Final/G/PianoWhiteKeys.txt"));
-			for (Key k : whiteKeys) {
-				k = new Key(scanner.next());
-			}
-			scanner = new Scanner(new File("src/Final/G/PianoBlackKeys.txt"));
-			for (Key k : blackKeys) {
-				k = new Key(scanner.next());
-			}*/
+			fileWriter = new FileWriter("src/Final/MusicSheet.txt");
+
 			scanner = new Scanner(new File("src/Final/G/PianoKeys.txt"));
 			for (int i = 0; i < pianoKeys.length; i++) {
 				pianoKeys[i] = new Key(scanner.next());
@@ -52,7 +49,8 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 		this.addKeyListener(this);
 		new Thread(this).start();
 		setVisible(true);
-
+		
+		
 	}
 
 	public void update(Graphics window) {
@@ -127,42 +125,55 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 		switch(e.getKeyCode()) {
 		case(KeyEvent.VK_A):
 			pianoKeys[0].play();
+			writeToFile(pianoKeys[0].getKey());
 			break;
 		case(KeyEvent.VK_W):
 			pianoKeys[1].play();
+		writeToFile(pianoKeys[1].getKey());
 			break;
 		case(KeyEvent.VK_S):
 			pianoKeys[2].play();
+		writeToFile(pianoKeys[2].getKey());
 			break;
 		case(KeyEvent.VK_D):
 			pianoKeys[3].play();
+		writeToFile(pianoKeys[3].getKey());
 			break;
 		case(KeyEvent.VK_R):
 			pianoKeys[4].play();
+		writeToFile(pianoKeys[4].getKey());
 			break;
 		case(KeyEvent.VK_F):
 			pianoKeys[5].play();
+		writeToFile(pianoKeys[5].getKey());
 			break;
 		case(KeyEvent.VK_T):
 			pianoKeys[6].play();
+		writeToFile(pianoKeys[6].getKey());
 			break;
 		case(KeyEvent.VK_G):
 			pianoKeys[7].play();
+		writeToFile(pianoKeys[7].getKey());
 			break;
 		case(KeyEvent.VK_H):
 			pianoKeys[8].play();
+		writeToFile(pianoKeys[8].getKey());
 			break;
 		case(KeyEvent.VK_U):
 			pianoKeys[9].play();
+		writeToFile(pianoKeys[9].getKey());
 			break;
 		case(KeyEvent.VK_J):
 			pianoKeys[10].play();
+		writeToFile(pianoKeys[10].getKey());
 			break;
 		case(KeyEvent.VK_I):
 			pianoKeys[11].play();
+		writeToFile(pianoKeys[11].getKey());
 			break;
 		case(KeyEvent.VK_K):
 			pianoKeys[12].play();
+		writeToFile(pianoKeys[12].getKey());
 			break;
 		
 		}
@@ -186,4 +197,21 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 			// e.printStackTrace();
 		}
 	}
+	public void writeToFile(String s) {
+		try {
+			fileWriter.write(s+"\n");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	public void closeWriter() {
+		try {
+			fileWriter.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
