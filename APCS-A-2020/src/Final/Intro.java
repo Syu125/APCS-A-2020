@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 public class Intro extends JPanel implements ActionListener {
 	private JButton b;
-	private boolean go = false;
+	private boolean run = false;
 
 	public Intro() {
 		b = new JButton();
@@ -16,19 +16,18 @@ public class Intro extends JPanel implements ActionListener {
 		b.addActionListener(this);
 		this.add(b);
 	}
-
+	public boolean getGo() {
+		//System.out.println();
+		return run;
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getSource().equals(b)) {
-			System.out.println("perf");
-			go = true;
+			run = true;
 		}
 	}
 
-	public boolean getGo() {
-		//System.out.println();
-		return go;
-	}
+	
 
 }

@@ -10,7 +10,7 @@ public class PianoFun extends JFrame{
 	private static final int HEIGHT =  1000;
 	
 	private Intro i;
-	private boolean go = false;
+	private volatile boolean go = false;
 	
 	public PianoFun() {
 		setSize(WIDTH,HEIGHT);
@@ -26,10 +26,9 @@ public static void main(String[] args) {
 public void startPlay() {
 	PianoAction g = new PianoAction();
 	((Component)g).setFocusable(true);
-	
 	getContentPane().add(g);
 	setVisible(true);
-	this.addWindowListener(new java.awt.event.WindowAdapter() {
+	addWindowListener(new java.awt.event.WindowAdapter() {
 		@Override
 	    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 			g.closeWriter();
@@ -40,7 +39,7 @@ public void addIntro() {
 	i = new Intro();
 	add(i);
 	setVisible(true);
-	go = i.getGo();
+	//go = i.getGo();
 	while(!go) {
 		go = i.getGo();
 		if(i.getGo()) {
