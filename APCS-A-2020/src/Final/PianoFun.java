@@ -36,7 +36,7 @@ public void startPlay() {
 	});
 }
 public void addIntro() {
-	i = new Intro();
+	i = new Intro(this);
 	add(i);
 	setVisible(true);
 	//go = i.getGo();
