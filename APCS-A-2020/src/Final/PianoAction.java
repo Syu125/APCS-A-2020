@@ -10,40 +10,48 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class PianoAction extends Canvas implements KeyListener, Runnable {
 	private Key[] whiteKeys;
 	private Key[] blackKeys;
 	private Key[] pianoKeys;
 
+	private volatile boolean paRecording;
+
 	private String key;
-	
+
 	private int whiteCount;
 	private int gap;
 
 	private Scanner scanner;
 	private FileWriter fileWriter;
 	private BufferedImage back;
-	private final String[] keyboard = { "A","W","S","D","R","F","T","G","H","U","J","I","K" };
+	private final String[] keyboard = { "A", "W", "S", "D", "R", "F", "T", "G", "H", "U", "J", "I", "K" };
 
-	private final boolean [] keyColor = new boolean[13];
-	
+	private final boolean[] keyColor = new boolean[13];
+
 	public PianoAction() {
 		setBackground(Color.WHITE);
 		whiteKeys = new Key[8];
 		blackKeys = new Key[5];
 		pianoKeys = new Key[13];
-		
+
+		paRecording = false;
+
 		whiteCount = 0;
 		gap = getWidth() / 15;
-		key =  "";
-		
-		for(int i = 0; i < keyColor.length; i++) {
+		key = "";
+
+		for (int i = 0; i < keyColor.length; i++) {
 			keyColor[i] = false;
 		}
 
@@ -60,12 +68,44 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 		this.addKeyListener(this);
 		new Thread(this).start();
 		setVisible(true);
-		
-		
+
 	}
 
 	public void update(Graphics window) {
 		paint(window);
+	}
+
+	public void canRecord(boolean b) {
+		paRecording = b;
+	}
+
+	public void canClear() {
+
+		try {
+			fileWriter = new FileWriter("src/Final/MusicSheet.txt", false);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void playAll() {
+		try {
+			String s = "";
+			scanner = new Scanner(new File("src/Final/MusicSheet.txt"));
+			while(scanner.hasNext()) {
+				s = scanner.next();
+				for (Key key : pianoKeys) {
+					if(key.getKey().equals(s)) {
+						key.play();
+						TimeUnit.MILLISECONDS.sleep(200);
+					}
+				}
+			}
+		} catch (FileNotFoundException | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void paint(Graphics window) {
@@ -77,90 +117,70 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 
 		int increment = 0;
 
-		prev.setColor(Color.WHITE);
-		/*
-		 * for(int i = 0; i < whiteKeys.length; i++) { prev.setColor(Color.BLACK);
-		 * prev.drawRect(i*getWidth()/7, (int)(getHeight()*0.5), getWidth()/7,
-		 * (int)(getHeight()*0.5)); } for (int i = 0; i < blackKeys.length; i++) {
-		 * prev.fillRect(getWidth()/11 + i*getWidth()/7, (int)(getHeight()*0.5),
-		 * getWidth()/9, (int)(getHeight()*0.4)); }
-		 */
 		prev.setColor(Color.BLACK);
-		/*
-		 * for (int i = 0; i < pianoKeys.length; i++) {
-		 * if(pianoKeys[i].getKey().length()==1) { if(i !=0 && i!= pianoKeys.length-1 &&
-		 * pianoKeys[i-1].getKey().length()==1) prev.drawRect(whiteCount*getWidth()/7,
-		 * (int)(getHeight()*0.5), getWidth()/7, (int)(getHeight()*0.5)); else
-		 * prev.drawRect(whiteCount*getWidth()/7, (int)(getHeight()*0.5), getWidth()/7,
-		 * (int)(getHeight()*0.5)); whiteCount++; }else
-		 * if(pianoKeys[i].getKey().length()==2){ if(i%2==0)
-		 * prev.fillRect((i+1)*getWidth()/13,(int)(getHeight()*0.5), getWidth()/9,
-		 * (int)(getHeight()*0.4)); else
-		 * prev.fillRect((i+2)*getWidth()/13,(int)(getHeight()*0.5), getWidth()/9,
-		 * (int)(getHeight()*0.4));
-		 * 
-		 * 
-		 * } }
-		 */
-		prev.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
+		prev.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 		for (int i = 0; i < pianoKeys.length; i++) {
 			prev.setColor(Color.BLACK);
 			if (pianoKeys[i].getKey().length() == 1) {
 				if (i != 0 && i != pianoKeys.length - 1 && pianoKeys[i - 1].getKey().length() == 1) {
-					if(keyColor[i]) {
+					if (keyColor[i]) {
 						prev.setColor(Color.GRAY);
 						increment += getWidth() / 15;
-						prev.fillRect(increment, (int) (getHeight() * 0.5), (int)(getWidth() / 7.5), (int) (getHeight() * 0.5));
-					}else {
+						prev.fillRect(increment, (int) (getHeight() * 0.5), (int) (getWidth() / 7.5),
+								(int) (getHeight() * 0.5));
+					} else {
 						increment += getWidth() / 15;
 						prev.setColor(Color.WHITE);
-						prev.fillRect(increment, (int) (getHeight() * 0.5), (int)(getWidth() / 7.5), (int) (getHeight() * 0.5));
+						prev.fillRect(increment, (int) (getHeight() * 0.5), (int) (getWidth() / 7.5),
+								(int) (getHeight() * 0.5));
 						prev.setColor(Color.BLACK);
-						prev.drawRect(increment, (int) (getHeight() * 0.5), (int)(getWidth() / 7.5), (int) (getHeight() * 0.5));
-						prev.drawString(keyboard[i], increment+getWidth()/15, (int) (getHeight())-10);
+						prev.drawRect(increment, (int) (getHeight() * 0.5), (int) (getWidth() / 7.5),
+								(int) (getHeight() * 0.5));
+						prev.drawString(keyboard[i], increment + getWidth() / 15, (int) (getHeight()) - 10);
 					}
+				} else {
+					if (keyColor[i]) {
+						prev.setColor(Color.GRAY);
+						prev.fillRect(increment, (int) (getHeight() * 0.5), (int) (getWidth() / 7.5),
+								(int) (getHeight() * 0.5));
 					} else {
-						if(keyColor[i]) {
-							prev.setColor(Color.GRAY);
-							prev.fillRect(increment, (int) (getHeight() * 0.5), (int)(getWidth() / 7.5),
-									(int) (getHeight() * 0.5));
-						}else {
-							prev.setColor(Color.BLACK);
-							prev.setColor(Color.WHITE);
-							prev.fillRect(increment, (int) (getHeight() * 0.5), (int)(getWidth() / 7.5),
-									(int) (getHeight() * 0.5));
-							prev.setColor(Color.BLACK);
-							prev.drawRect(increment, (int) (getHeight() * 0.5), (int)(getWidth() / 7.5),
-									(int) (getHeight() * 0.5));
-							prev.drawString(keyboard[i], increment+getWidth()/15, (int) (getHeight())-10);
-						}
-					
+						prev.setColor(Color.BLACK);
+						prev.setColor(Color.WHITE);
+						prev.fillRect(increment, (int) (getHeight() * 0.5), (int) (getWidth() / 7.5),
+								(int) (getHeight() * 0.5));
+						prev.setColor(Color.BLACK);
+						prev.drawRect(increment, (int) (getHeight() * 0.5), (int) (getWidth() / 7.5),
+								(int) (getHeight() * 0.5));
+						prev.drawString(keyboard[i], increment + getWidth() / 15, (int) (getHeight()) - 10);
+					}
+
 					whiteCount++;
 				}
-			} 
+			}
 			increment += getWidth() / 15;
 
 		}
 		increment = 0;
 		for (int i = 0; i < pianoKeys.length; i++) {
-		if (pianoKeys[i].getKey().length() == 1 && i != 0 && i != pianoKeys.length - 1 && pianoKeys[i - 1].getKey().length() == 1) {
-			increment += getWidth()/15;
-		}
-					
+			if (pianoKeys[i].getKey().length() == 1 && i != 0 && i != pianoKeys.length - 1
+					&& pianoKeys[i - 1].getKey().length() == 1) {
+				increment += getWidth() / 15;
+			}
+
 			if (pianoKeys[i].getKey().length() == 2) {
-				if(keyColor[i]) {
+				if (keyColor[i]) {
 					prev.setColor(Color.GRAY);
-					prev.fillRect(increment+25, (int) (getHeight() * 0.5), getWidth() / 10,
+					prev.fillRect(increment + 25, (int) (getHeight() * 0.5), getWidth() / 10,
 							(int) (getHeight() * 0.4));
-				}else {
+				} else {
 					prev.setColor(Color.BLACK);
-					prev.fillRect(increment+25, (int) (getHeight() * 0.5), getWidth() / 10,
+					prev.fillRect(increment + 25, (int) (getHeight() * 0.5), getWidth() / 10,
 							(int) (getHeight() * 0.4));
 					prev.setColor(Color.WHITE);
-					prev.drawString(keyboard[i], increment+getWidth()/15, (int) (getHeight() * 0.9)-10);
+					prev.drawString(keyboard[i], increment + getWidth() / 15, (int) (getHeight() * 0.9) - 10);
 				}
 			}
-			increment+= getWidth()/15;
+			increment += getWidth() / 15;
 		}
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
@@ -168,126 +188,126 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		switch(e.getKeyCode()) {
-		case(KeyEvent.VK_A):
+		switch (e.getKeyCode()) {
+		case (KeyEvent.VK_A):
 			keyColor[0] = true;
 			pianoKeys[0].play();
 			writeToFile(pianoKeys[0].getKey());
 			break;
-		case(KeyEvent.VK_W):
+		case (KeyEvent.VK_W):
 			keyColor[1] = true;
 			pianoKeys[1].play();
-		writeToFile(pianoKeys[1].getKey());
+			writeToFile(pianoKeys[1].getKey());
 			break;
-		case(KeyEvent.VK_S):
+		case (KeyEvent.VK_S):
 			keyColor[2] = true;
 			pianoKeys[2].play();
-		writeToFile(pianoKeys[2].getKey());
+			writeToFile(pianoKeys[2].getKey());
 			break;
-		case(KeyEvent.VK_D):
+		case (KeyEvent.VK_D):
 			keyColor[3] = true;
 			pianoKeys[3].play();
-		writeToFile(pianoKeys[3].getKey());
+			writeToFile(pianoKeys[3].getKey());
 			break;
-		case(KeyEvent.VK_R):
+		case (KeyEvent.VK_R):
 			keyColor[4] = true;
 			pianoKeys[4].play();
-		writeToFile(pianoKeys[4].getKey());
+			writeToFile(pianoKeys[4].getKey());
 			break;
-		case(KeyEvent.VK_F):
+		case (KeyEvent.VK_F):
 			keyColor[5] = true;
 			pianoKeys[5].play();
-		writeToFile(pianoKeys[5].getKey());
+			writeToFile(pianoKeys[5].getKey());
 			break;
-		case(KeyEvent.VK_T):
+		case (KeyEvent.VK_T):
 			keyColor[6] = true;
 			pianoKeys[6].play();
-		writeToFile(pianoKeys[6].getKey());
+			writeToFile(pianoKeys[6].getKey());
 			break;
-		case(KeyEvent.VK_G):
+		case (KeyEvent.VK_G):
 			keyColor[7] = true;
 			pianoKeys[7].play();
-		writeToFile(pianoKeys[7].getKey());
+			writeToFile(pianoKeys[7].getKey());
 			break;
-		case(KeyEvent.VK_H):
+		case (KeyEvent.VK_H):
 			keyColor[8] = true;
 			pianoKeys[8].play();
-		writeToFile(pianoKeys[8].getKey());
+			writeToFile(pianoKeys[8].getKey());
 			break;
-		case(KeyEvent.VK_U):
+		case (KeyEvent.VK_U):
 			keyColor[9] = true;
 			pianoKeys[9].play();
-		writeToFile(pianoKeys[9].getKey());
+			writeToFile(pianoKeys[9].getKey());
 			break;
-		case(KeyEvent.VK_J):
+		case (KeyEvent.VK_J):
 			keyColor[10] = true;
 			pianoKeys[10].play();
-		writeToFile(pianoKeys[10].getKey());
+			writeToFile(pianoKeys[10].getKey());
 			break;
-		case(KeyEvent.VK_I):
+		case (KeyEvent.VK_I):
 			keyColor[11] = true;
 			pianoKeys[11].play();
-		writeToFile(pianoKeys[11].getKey());
+			writeToFile(pianoKeys[11].getKey());
 			break;
-		case(KeyEvent.VK_K):
+		case (KeyEvent.VK_K):
 			keyColor[12] = true;
 			pianoKeys[12].play();
-		writeToFile(pianoKeys[12].getKey());
+			writeToFile(pianoKeys[12].getKey());
 			break;
-		
+
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		switch(e.getKeyCode()) {
-		case(KeyEvent.VK_A):
+		switch (e.getKeyCode()) {
+		case (KeyEvent.VK_A):
 			keyColor[0] = false;
 			break;
-		case(KeyEvent.VK_W):
+		case (KeyEvent.VK_W):
 			keyColor[1] = false;
 			break;
-		case(KeyEvent.VK_S):
+		case (KeyEvent.VK_S):
 			keyColor[2] = false;
 			break;
-		case(KeyEvent.VK_D):
+		case (KeyEvent.VK_D):
 			keyColor[3] = false;
 			break;
-		case(KeyEvent.VK_R):
+		case (KeyEvent.VK_R):
 			keyColor[4] = false;
 			break;
-		case(KeyEvent.VK_F):
+		case (KeyEvent.VK_F):
 			keyColor[5] = false;
 			break;
-		case(KeyEvent.VK_T):
+		case (KeyEvent.VK_T):
 			keyColor[6] = false;
 			break;
-		case(KeyEvent.VK_G):
+		case (KeyEvent.VK_G):
 			keyColor[7] = false;
 			break;
-		case(KeyEvent.VK_H):
+		case (KeyEvent.VK_H):
 			keyColor[8] = false;
 			break;
-		case(KeyEvent.VK_U):
+		case (KeyEvent.VK_U):
 			keyColor[9] = false;
 			break;
-		case(KeyEvent.VK_J):
+		case (KeyEvent.VK_J):
 			keyColor[10] = false;
 			break;
-		case(KeyEvent.VK_I):
+		case (KeyEvent.VK_I):
 			keyColor[11] = false;
 			break;
-		case(KeyEvent.VK_K):
+		case (KeyEvent.VK_K):
 			keyColor[12] = false;
 			break;
-		
+
 		}
 	}
 
@@ -303,14 +323,22 @@ public class PianoAction extends Canvas implements KeyListener, Runnable {
 			// e.printStackTrace();
 		}
 	}
+
 	public void writeToFile(String s) {
 		try {
-			fileWriter.write(s+"\n");
+			if (paRecording) {
+				fileWriter = new FileWriter("src/Final/MusicSheet.txt", true);
+				fileWriter.write(s + "\n");
+
+			}
+			fileWriter.close();
+
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
+
 	public void closeWriter() {
 		try {
 			fileWriter.close();
