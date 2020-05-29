@@ -20,7 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class PianoAction extends Canvas implements KeyListener, Runnable {
+public class PianoAction extends Canvas implements KeyListener, Runnable{
 	private Key[] whiteKeys;
 	private Key[] blackKeys;
 	private Key[] pianoKeys;
