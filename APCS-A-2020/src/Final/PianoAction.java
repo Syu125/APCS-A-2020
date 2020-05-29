@@ -21,8 +21,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class PianoAction extends Canvas implements KeyListener, Runnable{
-	private Key[] whiteKeys;
-	private Key[] blackKeys;
+	private WhiteKey[] whiteKeys;
+	private BlackKey[] blackKeys;
 	private Key[] pianoKeys;
 
 	private volatile boolean paRecording;
@@ -41,8 +41,8 @@ public class PianoAction extends Canvas implements KeyListener, Runnable{
 
 	public PianoAction() {
 		setBackground(Color.WHITE);
-		whiteKeys = new Key[8];
-		blackKeys = new Key[5];
+		whiteKeys = new WhiteKey[8];
+		blackKeys = new BlackKey[5];
 		pianoKeys = new Key[13];
 
 		paRecording = false;
